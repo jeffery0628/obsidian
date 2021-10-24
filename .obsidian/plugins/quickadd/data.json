@@ -1,0 +1,33 @@
+{
+  "choices": [
+    {
+      "id": "f21e9f07-0db4-4205-be49-7e200a1b50f6",
+      "name": "research",
+      "type": "Template",
+      "command": true,
+      "templatePath": "000 Templates/research_template.md",
+      "fileNameFormat": {
+        "enabled": false,
+        "format": ""
+      },
+      "folder": {
+        "enabled": true,
+        "folders": [
+          "100 Inbox/130 Cards/131 research cards"
+        ],
+        "chooseWhenCreatingNote": false,
+        "createInSameFolderAsActiveFile": false
+      },
+      "appendLink": false,
+      "incrementFileName": false,
+      "openFileInNewTab": {
+        "enabled": false,
+        "direction": "vertical",
+        "focus": true
+      },
+      "openFile": true,
+      "openFileInMode": "source"
+    }
+  ],
+  "macros": []
+}

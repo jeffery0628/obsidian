@@ -1,0 +1,6 @@
+{
+  "folder": "100 Inbox/110 Daily",
+  "template": "000 Templates/daily_template",
+  "autorun": true,
+  "format": "YYYY-MM-DD-dddd"
+}

@@ -1,0 +1,147 @@
+{
+  "main": {
+    "id": "bf4d2b2122cfbe66",
+    "type": "split",
+    "children": [
+      {
+        "id": "51de77b55f01e987",
+        "type": "leaf",
+        "state": {
+          "type": "empty",
+          "state": {}
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "21f462bcd7e344bf",
+    "type": "split",
+    "children": [
+      {
+        "id": "d871170e51507496",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "91cb634925af1425",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "f7e6a36f5822fc1b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "89de26024727b548",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 315.5121879577637
+  },
+  "right": {
+    "id": "29bd83e8dd5978c0",
+    "type": "split",
+    "children": [
+      {
+        "id": "eef5f8a5119deb38",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b35b184a274735ee",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": false
+              }
+            }
+          },
+          {
+            "id": "f9e1ff01361efdd6",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {}
+            }
+          },
+          {
+            "id": "3aae8f249151a0f4",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {}
+            }
+          },
+          {
+            "id": "2f647d73762200f1",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": false
+              }
+            }
+          }
+        ],
+        "currentTab": 1
+      },
+      {
+        "id": "dc0c3a979e2ef6ea",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2b6325500984f2c0",
+            "type": "leaf",
+            "state": {
+              "type": "todo",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 268.3600769042969
+  },
+  "active": "51de77b55f01e987",
+  "lastOpenFiles": [
+    "100 Inbox/120 Weekly/2021-W42.md",
+    "200 Areas/210 NLP/211 分词.md",
+    "100 Inbox/120 Weekly/2021-W43.md",
+    "100 Inbox/110 Daily/2021-10-25-星期一.md",
+    "100 Inbox/130 Cards/131 research cards/Coupling Distant Annotation and Adversarial Training for Cross-Domain Chinese Word Segmentation.md",
+    "000 Templates/replay_template.md",
+    "500 Tools/510 Obsidian/511 plugins/templater.md",
+    "300 Resources/obsidian templater frontmatter.md",
+    "300 Resources/obsidian templater file.md",
+    "300 Resources/obsidian templater date.md"
+  ]
+}

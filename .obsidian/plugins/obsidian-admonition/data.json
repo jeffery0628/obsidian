@@ -1,0 +1,31 @@
+{
+  "userAdmonitions": {
+    "metadata": {
+      "type": "metadata",
+      "color": "#7d7d7d",
+      "icon": {
+        "name": "angle-double-down",
+        "type": "font-awesome"
+      },
+      "command": false,
+      "title": "metadata"
+    },
+    "quote": {
+      "type": "quote",
+      "color": "3, 169, 252",
+      "icon": {
+        "name": "quote-left",
+        "type": "font-awesome"
+      },
+      "command": false,
+      "title": "quote"
+    }
+  },
+  "syntaxHighlight": true,
+  "copyButton": true,
+  "version": "6.4.0",
+  "autoCollapse": true,
+  "defaultCollapseType": "closed",
+  "syncLinks": true,
+  "enableMarkdownProcessor": false
+}
