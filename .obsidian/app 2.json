@@ -1,0 +1,13 @@
+{
+  "showFrontmatter": true,
+  "promptDelete": false,
+  "alwaysUpdateLinks": true,
+  "newFileLocation": "folder",
+  "newLinkFormat": "absolute",
+  "emacsyKeys": false,
+  "defaultViewMode": "preview",
+  "attachmentFolderPath": "700 Attachments",
+  "newFileFolderPath": "100 Inbox/130 Cards",
+  "fileSortOrder": "alphabetical",
+  "showUnsupportedFiles": true
+}
