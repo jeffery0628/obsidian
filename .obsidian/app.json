@@ -3,5 +3,9 @@
   "newLinkFormat": "absolute",
   "alwaysUpdateLinks": true,
   "newFileLocation": "folder",
-  "newFileFolderPath": "100 Inbox/130 Cards"
+  "newFileFolderPath": "100 Inbox/130 Cards",
+  "readableLineLength": false,
+  "foldHeading": true,
+  "emacsyKeys": false,
+  "showLineNumber": false
 }
