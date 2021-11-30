@@ -4,7 +4,10 @@
   "obsidian-dictionary-plugin",
   "obsidian-checklist-plugin",
   "quickadd",
-  "dataview",
   "obsidian-admonition",
-  "obsidian-codemirror-options"
+  "obsidian-codemirror-options",
+  "obsidian-mind-map",
+  "media-extended",
+  "pdf-to-markdown-plugin",
+  "obsidian-annotator"
 ]

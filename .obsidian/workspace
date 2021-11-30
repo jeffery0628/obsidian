@@ -1,33 +1,18 @@
 {
   "main": {
-    "id": "0c43ed8c0b3ab4c5",
+    "id": "373c220c79eb6b65",
     "type": "split",
     "children": [
       {
-        "id": "153ac8ed6894affd",
+        "id": "90fc6d4487d97850",
         "type": "leaf",
-        "dimension": 49.81949458483754,
         "state": {
           "type": "markdown",
           "state": {
-            "file": "200 Areas/230 Engineering/231 java.md",
-            "mode": "source"
-          }
-        },
-        "group": "7c282e53d3301975"
-      },
-      {
-        "id": "afd1e347a43b450e",
-        "type": "leaf",
-        "dimension": 50.18050541516246,
-        "state": {
-          "type": "markdown",
-          "state": {
-            "file": "200 Areas/230 Engineering/231 java.md",
+            "file": "300 Resources/MySql/MySql条件查询.md",
             "mode": "preview"
           }
-        },
-        "group": "7c282e53d3301975"
+        }
       }
     ],
     "direction": "vertical"
@@ -54,7 +39,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "未命名",
+                "query": "boot",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -75,7 +60,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 239
+    "width": 239,
+    "collapsed": true
   },
   "right": {
     "id": "67f2818c84ae56c1",
@@ -86,26 +72,18 @@
         "type": "tabs",
         "children": [
           {
-            "id": "0fcfc6004fa245ba",
-            "type": "leaf",
-            "state": {
-              "type": "calendar",
-              "state": {}
-            }
-          },
-          {
             "id": "b4525a18b033c989",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "200 Areas/230 Engineering/231 java.md",
+                "file": "300 Resources/MySql/MySql条件查询.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
                 "searchQuery": "",
-                "backlinkCollapsed": true,
+                "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
@@ -116,9 +94,9 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "200 Areas/230 Engineering/231 java.md",
-                "linksCollapsed": true,
-                "unlinkedCollapsed": false
+                "file": "300 Resources/MySql/MySql条件查询.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
               }
             }
           },
@@ -134,47 +112,40 @@
             }
           },
           {
-            "id": "1259d8f931a11aa6",
+            "id": "68535b221500f896",
             "type": "leaf",
             "state": {
-              "type": "outline",
-              "state": {
-                "file": "200 Areas/230 Engineering/231 java.md"
-              }
+              "type": "calendar",
+              "state": {}
             }
-          }
-        ],
-        "currentTab": 4
-      },
-      {
-        "id": "0cfcfdbe00785928",
-        "type": "tabs",
-        "children": [
+          },
           {
-            "id": "58d22130e9bcbd04",
+            "id": "5ede558d2d8510f3",
             "type": "leaf",
             "state": {
               "type": "todo",
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
-    "width": 273
+    "width": 232,
+    "collapsed": true
   },
-  "active": "153ac8ed6894affd",
+  "active": "90fc6d4487d97850",
   "lastOpenFiles": [
-    "200 Areas/230 Engineering/231 java.md",
-    "300 Resources/java Network.md",
-    "300 Resources/java File.md",
-    "300 Resources/java 模拟BS服务器.md",
-    "300 Resources/java TCP通信程序.md",
-    "300 Resources/java 网络编程三要素.md",
-    "300 Resources/java 网络协议分类.md",
-    "300 Resources/java 网络通信.md",
-    "300 Resources/软件结构.md",
-    "300 Resources/java concat方法.md"
+    "300 Resources/MySql/MySql条件查询.md",
+    "200 Areas/230 Engineering/232 MySql.md",
+    "300 Resources/MySql/Mysql基础查询.md",
+    "300 Resources/MySql/MySql简介.md",
+    "300 Resources/MySql 存储过程.md",
+    "300 Resources/MySql视图.md",
+    "300 Resources/MySql事务.md",
+    "300 Resources/MySql/MySql 插入.md",
+    "300 Resources/MySql/MySql 常见约束.md",
+    "300 Resources/MySql/MySql 常见类型.md"
   ]
 }
