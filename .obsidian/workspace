@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "200 Areas/230 Engineering/233 Spark.md",
+            "file": "300 Resources/Spark/Spark 概述.md",
             "mode": "source"
           }
         },
@@ -21,7 +21,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "200 Areas/230 Engineering/233 Spark.md",
+            "file": "300 Resources/Spark/Spark 概述.md",
             "mode": "preview"
           }
         },
@@ -89,7 +89,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "200 Areas/230 Engineering/233 Spark.md",
+                "file": "300 Resources/Spark/Spark 概述.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -106,7 +106,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "200 Areas/230 Engineering/233 Spark.md",
+                "file": "300 Resources/Spark/Spark 概述.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -149,15 +149,15 @@
   },
   "active": "90fc6d4487d97850",
   "lastOpenFiles": [
-    "200 Areas/230 Engineering/233 Spark.md",
     "300 Resources/Spark/Spark 概述.md",
+    "200 Areas/230 Engineering/233 Spark.md",
+    "300 Resources/Spark/Spark 核心概念.md",
+    "300 Resources/Spark/Spark 安装.md",
+    "300 Resources/Spark/Spark 读写文件.md",
     "300 Resources/Spark/Spark RDD 数据分区.md",
     "300 Resources/Spark/Spark RDD job的划分.md",
     "300 Resources/Spark/Spark RDD 持久化.md",
     "300 Resources/Spark/Spark RDD 依赖关系.md",
-    "300 Resources/Spark/Spark RDD 函数传递.md",
-    "300 Resources/Spark/Spark RDD Action.md",
-    "300 Resources/Spark/Spark RDD Transformation.md",
-    "300 Resources/Spark/Spark RDD 算子操作.md"
+    "300 Resources/Spark/Spark RDD 函数传递.md"
   ]
 }
