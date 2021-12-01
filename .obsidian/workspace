@@ -9,10 +9,23 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "300 Resources/MySql/MySql条件查询.md",
+            "file": "200 Areas/230 Engineering/233 Spark.md",
+            "mode": "source"
+          }
+        },
+        "group": "70e7f27d7fecdb8d"
+      },
+      {
+        "id": "9af2da580019fe82",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "200 Areas/230 Engineering/233 Spark.md",
             "mode": "preview"
           }
-        }
+        },
+        "group": "70e7f27d7fecdb8d"
       }
     ],
     "direction": "vertical"
@@ -60,8 +73,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 239,
-    "collapsed": true
+    "width": 239
   },
   "right": {
     "id": "67f2818c84ae56c1",
@@ -77,7 +89,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "300 Resources/MySql/MySql条件查询.md",
+                "file": "200 Areas/230 Engineering/233 Spark.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -94,7 +106,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "300 Resources/MySql/MySql条件查询.md",
+                "file": "200 Areas/230 Engineering/233 Spark.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,15 +149,15 @@
   },
   "active": "90fc6d4487d97850",
   "lastOpenFiles": [
-    "300 Resources/MySql/MySql条件查询.md",
-    "200 Areas/230 Engineering/232 MySql.md",
-    "300 Resources/MySql/Mysql基础查询.md",
-    "300 Resources/MySql/MySql简介.md",
-    "300 Resources/MySql 存储过程.md",
-    "300 Resources/MySql视图.md",
-    "300 Resources/MySql事务.md",
-    "300 Resources/MySql/MySql 插入.md",
-    "300 Resources/MySql/MySql 常见约束.md",
-    "300 Resources/MySql/MySql 常见类型.md"
+    "200 Areas/230 Engineering/233 Spark.md",
+    "300 Resources/Spark/Spark 概述.md",
+    "300 Resources/Spark/Spark RDD 数据分区.md",
+    "300 Resources/Spark/Spark RDD job的划分.md",
+    "300 Resources/Spark/Spark RDD 持久化.md",
+    "300 Resources/Spark/Spark RDD 依赖关系.md",
+    "300 Resources/Spark/Spark RDD 函数传递.md",
+    "300 Resources/Spark/Spark RDD Action.md",
+    "300 Resources/Spark/Spark RDD Transformation.md",
+    "300 Resources/Spark/Spark RDD 算子操作.md"
   ]
 }

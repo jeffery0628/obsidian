@@ -27,7 +27,7 @@ order by 排序的字段|表达式|函数|别名 【asc|desc】
 ## 按单个字段排序
 
 ```mysql
-#案例1：查询员工信息，并按照降序排序
+#案例1：查询员工信息，并按照薪资降序排序
 SELECT * 
 FROM employees 
 ORDER BY salary DESC;

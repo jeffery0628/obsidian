@@ -30,6 +30,6 @@ tags:
 [[300 Resources/MySql/MySql 常见约束|MySql 常见约束]]
 
 # 数据控制语言(DCL)
-[[300 Resources/MySql事务|MySql事务]]
-[[300 Resources/MySql视图|MySql视图]]
-[[300 Resources/MySql 存储过程|MySql 存储过程]]
+[[300 Resources/MySql/MySql事务|MySql事务]]
+[[300 Resources/MySql/MySql视图|MySql视图]]
+[[300 Resources/MySql/MySql 存储过程|MySql 存储过程]]
