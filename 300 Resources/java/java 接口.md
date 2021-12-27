@@ -41,4 +41,4 @@ interface 接口名{
 8. 接口也可以继承另一个接口，使用extends关键字。
 
 
-[[200 Areas/230 Engineering/231 java|java 目录]]
+[[200 Areas/230 Engineering/232 大数据/java|java 目录]]

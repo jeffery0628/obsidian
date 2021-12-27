@@ -18,7 +18,7 @@ tags:
 	5.   组件化**：Spring实现了使用简单的组件配置组合成一个复杂的应用。在 Spring 中可以使用XML和Java注解组合这些对象。
 	6.    **一站式**：在IOC和AOP的基础上可以整合各种企业应用的开源框架和优秀的第三方类库（实际上Spring 自身也提供了表述层的SpringMVC和持久层的Spring JDBC）。
 5.    Spring模块
-   ![[700 Attachments/Pasted image 20211128231643.png]]
+   ![[700 Attachments/720 pictures/Pasted image 20211128231643.png]]
    
 # Spring HelloWorld
 1. 创建一个Maven版的Java工程

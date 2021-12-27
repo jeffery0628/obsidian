@@ -173,7 +173,7 @@ rdd2.collect.foreach(println)
 
 ## `filter(func)`
 
-作用：过滤，返回䘝新的RDD，是由func的返回值为true的元素组成。
+作用：过滤，返回新的RDD，是由func的返回值为true的元素组成。
 
 
 

@@ -32,4 +32,4 @@ tags:
 | **字节流** | 字节输入流：**InputStream** | 字节输出流：**OutputStream** |
 | **字符流** |   字符输入流：**Reader**    |    字符输出流：**Writer**    |
 
-[[200 Areas/230 Engineering/231 java|java 目录]]
+[[200 Areas/230 Engineering/232 大数据/java|java 目录]]

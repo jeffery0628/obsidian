@@ -26,4 +26,4 @@ tags:
 想要运行一个已有的Java程序，那么只需安装 JRE 即可。
 想要开发一个全新的Java程序，必须安装 JDK 。
 
-[[200 Areas/230 Engineering/231 java|java 目录]]
+[[200 Areas/230 Engineering/232 大数据/java|java 目录]]

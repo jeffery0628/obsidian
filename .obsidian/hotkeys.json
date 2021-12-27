@@ -14,5 +14,13 @@
       ],
       "key": "ArrowDown"
     }
+  ],
+  "templater-obsidian:000 Templates/inbox_template.md": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "N"
+    }
   ]
 }

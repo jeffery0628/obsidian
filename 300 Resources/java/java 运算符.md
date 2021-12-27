@@ -43,4 +43,4 @@ tags:
 如果 `布尔类型表达式` 结果为`true`，把`结果1`赋值给变量，如果`布尔类型表达式`结果为`false`，把`结果2`赋值给变量。
 
 
-[[200 Areas/230 Engineering/231 java|java 目录]]
+[[200 Areas/230 Engineering/232 大数据/java|java 目录]]

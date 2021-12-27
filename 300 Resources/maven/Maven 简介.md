@@ -27,7 +27,7 @@ jar包往往不是孤立存在的，很多jar包都需要在其他jar包的支�
 上一点说的是jar包不足项目无法正常工作，但其实有的时候jar包多了项目仍然无法正常工作，这就是jar包之间的冲突。
 
 举个例子：我们现在有三个工程MakeFriend、HelloFriend、和Hello。MakeFriend依赖HelloFriend，HelloFriend依赖Hello。而Hello依赖log4j.1.2.17.jar，HelloFriend依赖log4j.1.2.14.jar。如下图所示：
-![[700 Attachments/Pasted image 20211128204917.png]]
+![[700 Attachments/720 pictures/Pasted image 20211128204917.png]]
 
 那么MakeFriend工程的运行时环境中该导入log4j.1.2.14.jar呢还是log4j.1.2.17.jar呢？
 
@@ -46,7 +46,7 @@ JavaEE开发中需要使用到的jar包种类繁多，几乎每个jar包在其�
 随着JavaEE项目的规模越来越庞大，开发团队的规模也与日俱增。一个项目上千人的团队持续开发很多年对于JavaEE项目来说再正常不过。那么我们想象一下：几百上千的人开发的项目是同一个Web工程。那么架构师、项目经理该如何划分项目的模块、如何分工呢？这么大的项目已经不可能通过package结构来划分模块，必须将项目拆分成多个工程协同开发。多个模块工程中有的是Java工程，有的是Web工程。
 
 那么工程拆分后又如何进行互相调用和访问呢？这就需要用到Maven的依赖管理机制。大家请看调查项目拆分的情况：
-![[700 Attachments/Pasted image 20211128205159.png]]
+![[700 Attachments/720 pictures/Pasted image 20211128205159.png]]
 
 上层模块依赖下层，所以下层模块中定义的API都可以为上层所调用和访问。
 
@@ -88,13 +88,13 @@ Maven是一款自动化构建工具，专注服务于Java平台的项目构建�
 > 这是阳光明媚的一天。托马斯向往常一样早早的来到了公司，冲好一杯咖啡，进入了自己的邮箱——很不幸，QA小组发来了一封邮件，报告了他昨天提交的模块的测试结果——有BUG。“好吧，反正也不是第一次”，托马斯摇摇头，进入IDE，运行自己的程序，编译、打包、部署到服务器上，然后按照邮件中的操作路径进行测试。“嗯，没错，这个地方确实有问题”，托马斯说道。于是托马斯开始尝试修复这个BUG，当他差不多有眉目的时候已经到了午饭时间。 下午继续工作。BUG很快被修正了，接着托马斯对模块重新进行了编译、打包、部署，测试之后确认没有问题了，回复了QA小组的邮件。 一天就这样过去了，明媚的阳光化作了美丽的晚霞，托马斯却觉得生活并不像晚霞那样美好啊。
 
 让我们来梳理一下托马斯这一天中的工作内容:
-![[700 Attachments/Pasted image 20211128210122.png]]
+![[700 Attachments/720 pictures/Pasted image 20211128210122.png]]
 
 从中我们发现，托马斯的很大一部分时间花在了“编译、打包、部署、测试”这些程式化的工作上面，而真正需要由“人”的智慧实现的分析问题和编码却只占了很少一部分。
-![[700 Attachments/Pasted image 20211128210146.png]]
+![[700 Attachments/720 pictures/Pasted image 20211128210146.png]]
 
 能否将这些程式化的工作交给机器**自动**完成呢？——当然可以！这就是自动化构建。
-![[700 Attachments/Pasted image 20211128210152.png]]
+![[700 Attachments/720 pictures/Pasted image 20211128210152.png]]
 
 那么Maven又是如何实现自动化构建的呢？简单的说来就是它可以自动的从构建过程的起点一直执行到终点：
-![[700 Attachments/Pasted image 20211128210205.png]]
+![[700 Attachments/720 pictures/Pasted image 20211128210205.png]]

@@ -35,4 +35,4 @@ public class Demo01_Random {
 
 > 创建一个 Random 对象，每次调用 `nextInt() `方法，都会生成一个随机数。
 
-[[200 Areas/230 Engineering/231 java|java 目录]]
+[[200 Areas/230 Engineering/232 大数据/java|java 目录]]

@@ -27,4 +27,4 @@ tags:
 3. 把这个空间的地址返回给对象的创建者中的引用变量
 4. 当一个对象被认定是垃圾后, 由GC在后台负责销毁此对象, 并释放内存空间
 
-[[200 Areas/230 Engineering/231 java|java 目录]]
+[[200 Areas/230 Engineering/232 大数据/java|java 目录]]

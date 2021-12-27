@@ -21,4 +21,4 @@ public static void main(String[] args) {
 
 > System.in 系统输入指的是通过键盘录入数据。
 
-[[200 Areas/230 Engineering/231 java|java 目录]]
+[[200 Areas/230 Engineering/232 大数据/java|java 目录]]

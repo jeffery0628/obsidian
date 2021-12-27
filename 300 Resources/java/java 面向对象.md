@@ -37,4 +37,4 @@ tags:
 5. 对象是实际存在的该类事物的每个个体，因而也称实例(instance)。
 6. “万事万物皆对象” – 在java中一切皆对象
 
-[[200 Areas/230 Engineering/231 java|java 目录]]
+[[200 Areas/230 Engineering/232 大数据/java|java 目录]]

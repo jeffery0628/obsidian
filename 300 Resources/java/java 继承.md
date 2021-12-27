@@ -81,4 +81,4 @@ super 和 this的区别
 | 调用构造器 | 调用本类构造器，必须放在构造器的首行                   | 调用直接父类构造器，必须放在子类构造器的首行 |
 | 特殊       | 表示当前对象                                           | 无此概念                                     |
 
-[[200 Areas/230 Engineering/231 java|java 目录]]
+[[200 Areas/230 Engineering/232 大数据/java|java 目录]]

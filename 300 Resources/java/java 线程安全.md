@@ -70,4 +70,4 @@ public class Demo {
 >
 > 若有多个线程同时执行`写操作`，一般都需要考虑线程同步， 否则的话就可能影响线程安全。
 
-[[200 Areas/230 Engineering/231 java|java 目录]]
+[[200 Areas/230 Engineering/232 大数据/java|java 目录]]

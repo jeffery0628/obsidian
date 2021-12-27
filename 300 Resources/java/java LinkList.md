@@ -29,6 +29,6 @@ tags:
     ![](https://images-1257755739.cos.ap-guangzhou.myqcloud.com/hexo/posts/java-data-structure/%E5%88%A0%E9%99%A4%E7%BB%93%E7%82%B9.bmp)
 
 
-[[200 Areas/230 Engineering/231 java|java 目录]]
+[[200 Areas/230 Engineering/232 大数据/java|java 目录]]
 
 

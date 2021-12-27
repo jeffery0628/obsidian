@@ -60,4 +60,4 @@ LinkedList是List的子类，List中的方法LinkedList都是可以使用。在�
 
 
 
-[[200 Areas/230 Engineering/231 java|java 目录]]
+[[200 Areas/230 Engineering/232 大数据/java|java 目录]]

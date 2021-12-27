@@ -73,4 +73,4 @@ public class Demo06GetStream {
 > `of` 方法的参数其实是一个可变参数，所以支持数组。
 
 
-[[200 Areas/230 Engineering/231 java|java 目录]]
+[[200 Areas/230 Engineering/232 大数据/java|java 目录]]

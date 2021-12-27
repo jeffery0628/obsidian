@@ -24,7 +24,7 @@ limit 【起始的条目索引，】条目数;
 >
 > 1. 起始条目索引从0开始
 > 2. limit子句放在查询语句的最后
-> 3. 公式：select * from  表 limit （page-1）*sizePerPage,sizePerPage
+> 3. 公式：select * from  表 limit （page-1）\*sizePerPage,  sizePerPage
 
 ```mysql
 #1：查询前五条员工信息

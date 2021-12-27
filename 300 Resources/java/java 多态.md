@@ -33,4 +33,4 @@ e.school = "pku";//非法,Person类没有school成员变量
 
 > 属性是在编译时确定的，编译时 e  为Person类型，没有school成员变量，因而编译错误。
 
-[[200 Areas/230 Engineering/231 java|java 目录]]
+[[200 Areas/230 Engineering/232 大数据/java|java 目录]]

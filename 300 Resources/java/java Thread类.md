@@ -24,4 +24,4 @@ tags:
 - `public static Thread currentThread()` :返回对当前正在执行的线程对象的引用。
 
 
-[[200 Areas/230 Engineering/231 java|java 目录]]
+[[200 Areas/230 Engineering/232 大数据/java|java 目录]]

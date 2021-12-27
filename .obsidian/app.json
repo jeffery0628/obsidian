@@ -1,9 +1,12 @@
 {
-  "newFileLocation": "folder",
-  "newFileFolderPath": "100 Inbox",
+  "legacyEditor": true,
+  "livePreview": false,
+  "foldHeading": true,
+  "foldIndent": true,
   "newLinkFormat": "absolute",
-  "showUnsupportedFiles": true,
   "attachmentFolderPath": "700 Attachments",
+  "promptDelete": false,
   "alwaysUpdateLinks": true,
-  "promptDelete": false
+  "newFileLocation": "folder",
+  "newFileFolderPath": "100 Inbox"
 }

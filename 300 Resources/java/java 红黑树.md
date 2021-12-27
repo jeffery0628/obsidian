@@ -31,5 +31,5 @@ tags:
 
  速度特别快,趋近平衡树,查找叶子元素最少和最多次数不多于二倍
 
-[[200 Areas/230 Engineering/231 java|java 目录]]
+[[200 Areas/230 Engineering/232 大数据/java|java 目录]]
 

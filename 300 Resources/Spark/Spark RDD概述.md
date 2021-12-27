@@ -96,7 +96,7 @@ RDDs 通过操作算子进行转换，转换得到的新 RDD 包含了从其他 
 
 ### 对存储键值对的 RDD, 还有一个可选的分区器
 
- 只有对于 **key-value**的 RDD, 才会有 **Partitioner**, 非**key-value**的 RDD 的 **Partitioner** 的值是 **None**. **Partitiner** 不但决定了 RDD 的本区数量, 也决定了 parent RDD Shuffle 输出时的分区数量.
+ 只有对于 **key-value**的 RDD, 才会有 **Partitioner**, 非**key-value**的 RDD 的 **Partitioner** 的值是 **None**. **Partitiner** 不但决定了 RDD 的分区数量, 也决定了 parent RDD Shuffle 输出时的分区数量.
 
 
 
