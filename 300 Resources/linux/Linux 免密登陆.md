@@ -4,6 +4,9 @@ tags:
   - linux
 
 ---
+# 原理
+![[700 Attachments/Pasted image 20220116111713.png]]
+
 
 # 客户端生成公私钥
 本地客户端生成公私钥：（一路回车默认即可）

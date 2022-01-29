@@ -19,6 +19,6 @@ vim /etc/hostname
 ```
 
 ```
-vimm /etc/hosts
+vim /etc/hosts
 ```
 

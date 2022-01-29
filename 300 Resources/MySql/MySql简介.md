@@ -5,28 +5,19 @@ tags:
   - 大数据
 ---
 
-# 启动、停止、登录、退出
+# 什么是mysql
+1. MySQL是一个关系型数据库管理系统，由瑞典MySQL AB公司开发，目前属于Oracle公司。 
+2. Mysql是开源的，可以定制的，采用了GPL协议，你可以修改源码来开发自己的Mysql系统。 
+3. MySQL使用标准的SQL数据语言形式。
+4. MySQL可以允许于多个系统上，并且支持多种语言。这些编程语言包括C、C++、Python、Java、Perl、PHP、Eiffel、Ruby和Tcl等。
+5. MySQL支持大型数据库，支持5000万条记录的数据仓库，32位系统表文件最大可支持4GB，64位系统支持最大的表文件为8TB。
 
- net start 服务名（启动服务）  
- net stop 服务名（停止服务）  
- mysql 【-h主机名 -P端口号 】-u用户名 -p密码  (登陆)  
- exit  ctrl+c  (退出)
 
-# 语法规范
 
-1.  不区分大小写,但建议关键字大写，表名、列名小写
-2.  每条命令最好用分号结尾
-3.  每条命令根据需要，可以进行缩进 或换行
-4.  注释：
-    -   单行注释：#注释文字
-    -   单行注释：-- 注释文字
-    -   多行注释：/* 注释文字 \*/
 
-# SQL 语言分类
-DQL（Data Query Language）：数据查询语言                -->   select 
-DML(Data Manipulate Language):数据操作语言               -->  insert 、update、delete
-DDL（Data Define Languge）：数据定义语言                  -->  create、drop、alter
-TCL（Transaction Control Language）：事务控制语言  --> commit、rollback
+
+
+
 
 
 

@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "300 Resources/git&github/git 命令行操作.md",
+            "file": "200 Areas/230 Engineering/232 大数据/zookeeper.md",
             "mode": "source"
           }
         },
@@ -21,7 +21,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "300 Resources/git&github/git 命令行操作.md",
+            "file": "200 Areas/230 Engineering/232 大数据/zookeeper.md",
             "mode": "preview"
           }
         },
@@ -52,7 +52,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "静态ip",
+                "query": "免密",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -73,7 +73,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 239
+    "width": 264
   },
   "right": {
     "id": "67f2818c84ae56c1",
@@ -89,7 +89,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "300 Resources/git&github/git 命令行操作.md",
+                "file": "200 Areas/230 Engineering/232 大数据/zookeeper.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -106,7 +106,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "300 Resources/git&github/git 命令行操作.md",
+                "file": "200 Areas/230 Engineering/232 大数据/zookeeper.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -132,6 +132,23 @@
             }
           },
           {
+            "id": "6a5afdbce0249724",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "200 Areas/230 Engineering/232 大数据/zookeeper.md"
+              }
+            }
+          }
+        ],
+        "currentTab": 4
+      },
+      {
+        "id": "34347ddfe6b23c79",
+        "type": "tabs",
+        "children": [
+          {
             "id": "5ede558d2d8510f3",
             "type": "leaf",
             "state": {
@@ -139,25 +156,23 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 232,
-    "collapsed": true
+    "width": 232
   },
-  "active": "d05b92e5fa7e76f8",
+  "active": "9af2da580019fe82",
   "lastOpenFiles": [
-    "300 Resources/git&github/git 命令行操作.md",
-    "200 Areas/230 Engineering/231 基本功/git & github.md",
-    "100 Inbox/Hadoop 运行环境搭建.md",
-    "300 Resources/docker/docker 挂载主机目录.md",
-    "200 Areas/230 Engineering/231 基本功/docker.md",
-    "300 Resources/docker/docker 容器常用命令.md",
-    "300 Resources/docker/docker 容器设置固定ip.md",
-    "300 Resources/linux/Linux ip配置.md",
-    "300 Resources/docker/docker 容器导入导出.md",
-    "300 Resources/docker/docker 进入容器.md"
+    "200 Areas/230 Engineering/232 大数据/zookeeper.md",
+    "300 Resources/zookeeper/Zookeeper 企业面试真题.md",
+    "300 Resources/zookeeper/Zookeeper 写数据流程.md",
+    "300 Resources/zookeeper/Zookeeper 内部原理.md",
+    "300 Resources/zookeeper/Zookeeper 监听服务器节点动态上下线案例.md",
+    "300 Resources/zookeeper/Zookeeper API 操作.md",
+    "300 Resources/zookeeper/Zookeeper 客户端命令行操作.md",
+    "200 Areas/230 Engineering/232 大数据/hadoop.md",
+    "300 Resources/hadoop/Hadoop HDFS-HA 配置Zookeeper集群.md",
+    "300 Resources/zookeeper/Zookeeper 安装.md"
   ]
 }
