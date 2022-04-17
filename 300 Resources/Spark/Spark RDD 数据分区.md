@@ -8,7 +8,11 @@ tags:
 
 对于只存储 **value**的 RDD, 不需要分区器，只有存储**Key-Value**类型的才会需要分区器。
 
-Spark 目前支持 Hash 分区和 Range 分区，用户也可以自定义分区，Hash 分区为当前的默认分区，Spark 中分区器直接决定了 RDD 中分区的个数、RDD 中每条数据经过 Shuffle 过程后属于哪个分区和 Reduce 的个数。
+Spark 目前支持 ==Hash== 分区和 ==Range== 分区，用户也可以自定义分区，Hash 分区为当前的默认分区，Spark 中分区器直接决定了 RDD 中分区的个数、RDD 中每条数据经过 Shuffle 过程后属于哪个分区和 Reduce 的个数。
+
+> 注意：
+> 1. 只有Key-Value类型的RDD才有分区器，非Key-Value类型的RDD分区的值是None
+> 2. 每个RDD的分区ID范围：0~numPartitions-1，决定这个值是属于那个分区的。
 
 ## 查看RDD的分区
 
@@ -69,6 +73,8 @@ println(rdd4.collect.mkString(","))
 (0,10 : a),(0,20 : b),(0,40 : d),(0,50 : e),(0,60 : f),(1,31 : c)  使用hash分区，注意31
 ```
 
+> HashPartitioner分区弊端：可能导致每个分区中数据量的不均匀，极端情况下会导致某些分区拥有RDD的全部数据。
+
 ## RangePartitioner
 
 **HashPartitioner** 分区弊端： 可能导致每个分区中数据量的不均匀，极端情况下会导致某些分区拥有 RDD 的全部数据。比如前面的例子就是一个极端, 只有31进入分区了。
@@ -82,7 +88,7 @@ println(rdd4.collect.mkString(","))
 
 ## 自定义分区器
 
-要实现自定义的分区器，你需要继承 **org.apache.spark.Partitioner**, 并且需要实现下面的方法:
+要实现自定义的分区器，需要继承 **org.apache.spark.Partitioner**, 并且需要实现下面的方法:
 
 1. `numPartitions`:该方法需要返回分区数, 必须要大于0.
 2. `getPartition(key)`:返回指定键的分区编号(0到numPartitions-1)。

@@ -19,9 +19,21 @@ tags:
 ## DAG 有向无环图
 
 Spark 的顶层调度层使用 RDD 的依赖为每个 job 创建一个由 stages 组成的 DAG(有向无环图). 在 Spark API 中, 这被称作 DAG 调度器(DAG Scheduler)。
+ 
+
+DAG（Directed Acyclic Graph）有向无环图是由点和线组成的拓扑图形，该图形具有方向，不会闭环。原始的RDD通过一系列的转换就形成了DAG，根据RDD之间的依赖关系的不同将DAG划分成不同的Stage，对于窄依赖，partition的转换处理在Stage中完成计算。对于宽依赖，由于有Shuffle的存在，只能在parent RDD处理完成后，才能开始接下来的计算，因此宽依赖是划分Stage的依据。例如，DAG记录了RDD的转换过程和任务的阶段。
+![[700 Attachments/Pasted image 20220314221351.png]]
 
 注意到, 有些错误, 比如: 连接集群的错误, 配置参数错误, 启动一个 Spark job 的错误, 这些错误必须处理, 并且都表现为 DAG Scheduler 错误. 这是因为一个 Spark job 的执行是被 DAG 来处理。DAG 为每个 job 构建一个 stages 组成的图表, 从而确定运行每个 task 的位置, 然后传递这些信息给 TaskSheduler. TaskSheduler 负责在集群中运行任务。
 
+RDD任务切分中间分为：Application、Job、Stage和Task
+1. Application：初始化一个SparkContext即生成一个Application；
+2. Job：一个Action算子就会生成一个Job；
+3. Stage：Stage等于宽依赖的个数加1；
+4. Task：一个Stage阶段中，最后一个RDD的分区个数就是Task的个数。
+
+
+> Application->Job->Stage->Task每一层都是1对n的关系。 
 
 
 ## Jobs
@@ -35,6 +47,36 @@ Spark job 处于 Spark 执行层级结构中的最高层. 每个 Spark job 对�
 从整体来看, 一个 stage 可以任务是“计算(task)”的集合, 这些每个“计算”在各自的 Executor 中进行运算, 而不需要同其他的执行器或者驱动进行网络通讯. 换句话说, 当任何两个 workers 之间开始需要网络通讯的时候, 这时候一个新的 stage 就产生了, 例如: shuffle 的时候。
 
 这些创建 stage 边界的依赖称为 **ShuffleDependencies**. shuffle 是由宽依赖所引起的, 比如: **sort**, **groupBy**, 因为他们需要在分区中重新分发数据. 那些窄依赖的转换会被分到同一个 stage 中。
+
+```scala
+def main(args: Array[String]): Unit = {  
+  
+  //1.创建SparkConf并设置App名称  
+ val conf: SparkConf = new SparkConf().setAppName("SparkCoreTest").setMaster("local[*]")  
+  
+  //2. Application：初始化一个SparkContext即生成一个Application；  
+ val sc: SparkContext = new SparkContext(conf)  
+  
+  //3. 创建RDD  
+ val dataRDD: RDD[Int] = sc.makeRDD(List(1,2,3,4,1,2),2)  
+  
+  //3.1 聚合  
+ val resultRDD: RDD[(Int, Int)] = dataRDD.map((_,1)).reduceByKey(_+_)  
+  
+  // Job：一个Action算子就会生成一个Job；  
+ //3.2 job1打印到控制台 resultRDD.collect().foreach(println)  
+  
+  //3.3 job2输出到磁盘  
+ resultRDD.saveAsTextFile("output")  
+  
+  Thread.sleep(1000000)  
+  
+  //4.关闭连接  
+ sc.stop()  
+}
+```
+![[700 Attachments/Pasted image 20220314134553.png]]
+
 
 ```scala
 val rdd1 = sc.textFile("src/main/resources/words.txt")

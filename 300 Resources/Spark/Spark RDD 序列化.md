@@ -5,9 +5,59 @@ tags:
   - 大数据
 ---
 
-# 传递函数
+# 引入
 
 进行 Spark 进行编程的时候, 初始化工作是在 **driver**端完成的, 而实际的运行程序是在**executor**端进行的. 所以就涉及到了进程间的通讯, 数据是需要序列化的。
+![[700 Attachments/Pasted image 20220314102619.png]]
+
+# 闭包
+## 闭包引入
+```scala
+  def main(args: Array[String]): Unit = {
+
+    //1.创建SparkConf并设置App名称
+    val conf: SparkConf = new SparkConf().setAppName("SparkCoreTest").setMaster("local[*]")
+
+    //2.创建SparkContext，该对象是提交Spark App的入口
+    val sc: SparkContext = new SparkContext(conf)
+
+    //3.创建两个对象
+    val user1 = new User()
+    user1.name = "zhangsan"
+
+    val user2 = new User()
+    user2.name = "lisi"
+
+    val userRDD1: RDD[User] = sc.makeRDD(List(user1, user2))
+
+    //3.1 打印，ERROR报java.io.NotSerializableException
+    userRDD1.foreach(user => println(user.name))
+
+
+    //3.2 打印，RIGHT
+    val userRDD2: RDD[User] = sc.makeRDD(List())
+    //userRDD2.foreach(user => println(user.name))
+
+    //3.3 打印，ERROR Task not serializable 注意：没执行就报错了
+    userRDD2.foreach(user => println(user.name))
+
+    //4.关闭连接
+    sc.stop()
+  }
+
+
+//class User {  
+//    var name: String = _  
+//}  
+class User extends Serializable {  
+  var name: String = _  
+}
+```
+
+## 闭包检查
+![[700 Attachments/Pasted image 20220314132018.png]]
+
+
 
 
 
@@ -89,6 +139,9 @@ def main(args: Array[String]): Unit = {
 
 
 # 传递变量
+说明：
+Driver：算子以外的代码都是在Driver端执行
+Executor：算子里面的代码都是在Executor端执行
 
 ```scala
 // query 为需要查找的子字符串

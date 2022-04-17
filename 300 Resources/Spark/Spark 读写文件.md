@@ -35,8 +35,6 @@ val rdd2 = rdd1.flatMap(_.split(" ")).map((_, 1)).reduceByKey(_ +_)
 rdd2.saveAsTextFile("hdfs://hadoop201:9000/words_output")
 ```
 
-![](https://images-1257755739.cos.ap-guangzhou.myqcloud.com/hexo/posts/spark-file-read-save/image-20210920202118264.png)
-
 # 读写 json 文件
 
 如果 JSON 文件中每一行就是一个 JSON 记录，那么可以通过将 JSON 文件当做文本文件来读取，然后利用相关的 JSON 库对每一条数据进行 JSON 解析。
@@ -73,8 +71,6 @@ rdd1.saveAsSequenceFile("hdfs://hadoop201:9000/seqFiles")
 // 读取
 val rdd1 = sc.sequenceFile[String, Int]("hdfs://hadoop201:9000/seqFiles")
 ```
-
-![](https://images-1257755739.cos.ap-guangzhou.myqcloud.com/hexo/posts/spark-file-read-save/image-20210920202100133.png)
 
 
 

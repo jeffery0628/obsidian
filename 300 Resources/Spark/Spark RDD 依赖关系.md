@@ -6,37 +6,109 @@ tags:
 ---
 
 # 查看RDD的血缘关系
-
-
+RDD支持粗粒度转换，即在大量记录上执行的单个操作。将创建RDD的一系列Lineage（血统）记录下来，以便恢复丢失的分区。RDD的Lineage会记录RDD的元数据信息和转换行为，当该RDD的部分分区数据丢失时，它可以根据这些信息来重新运算和恢复丢失的数据分区。
 
 ```scala
-val rdd1 = sc.parallelize(Array("hello world", "hello world","hello jeffery", "jeffery", "hahah"), 2)
-val rdd2 = rdd1.map((_,1)).reduceByKey(_+_)
-val result_debug = rdd2.toDebugString
-println(result_debug)
+def main(args: Array[String]): Unit = {  
+  //1.创建SparkConf并设置App名称  
+ val conf: SparkConf = new SparkConf().setAppName("SparkCoreTest").setMaster("local[*]")  
+  
+  //2.创建SparkContext，该对象是提交Spark App的入口  
+ val sc: SparkContext = new SparkContext(conf)  
+  
+  val fileRDD: RDD[String] = sc.textFile("input/1.txt")  
+  println(fileRDD.toDebugString)  
+  println("----------------------")  
+  
+  val wordRDD: RDD[String] = fileRDD.flatMap(_.split(" "))  
+  println(wordRDD.toDebugString)  
+  println("----------------------")  
+  
+  val mapRDD: RDD[(String, Int)] = wordRDD.map((_,1))  
+  println(mapRDD.toDebugString)  
+  println("----------------------")  
+  
+  val resultRDD: RDD[(String, Int)] = mapRDD.reduceByKey(_+_)  
+  println(resultRDD.toDebugString)  
+  
+  resultRDD.collect()  
+  
+  //4.关闭连接  
+ sc.stop()  
+}
 ```
 
 结果：
 
 ```
-(2) ShuffledRDD[2] at reduceByKey at scala.scala:29 []
- +-(2) MapPartitionsRDD[1] at map at scala.scala:29 []
-    |  ParallelCollectionRDD[0] at parallelize at scala.scala:28 []
+(2) input/1.txt MapPartitionsRDD[1] at textFile at Lineage01.scala:15 []
+ |  input/1.txt HadoopRDD[0] at textFile at Lineage01.scala:15 []
+----------------------
+(2) MapPartitionsRDD[2] at flatMap at Lineage01.scala:19 []
+ |  input/1.txt MapPartitionsRDD[1] at textFile at Lineage01.scala:15 []
+ |  input/1.txt HadoopRDD[0] at textFile at Lineage01.scala:15 []
+----------------------
+(2) MapPartitionsRDD[3] at map at Lineage01.scala:23 []
+ |  MapPartitionsRDD[2] at flatMap at Lineage01.scala:19 []
+ |  input/1.txt MapPartitionsRDD[1] at textFile at Lineage01.scala:15 []
+ |  input/1.txt HadoopRDD[0] at textFile at Lineage01.scala:15 []
+----------------------
+(2) ShuffledRDD[4] at reduceByKey at Lineage01.scala:27 []
+ +-(2) MapPartitionsRDD[3] at map at Lineage01.scala:23 []
+    |  MapPartitionsRDD[2] at flatMap at Lineage01.scala:19 []
+    |  input/1.txt MapPartitionsRDD[1] at textFile at Lineage01.scala:15 []
+    |  input/1.txt HadoopRDD[0] at textFile at Lineage01.scala:15 []
 ```
 
 > 圆括号中的数字表示 RDD 的并行度. 也就是有几个分区.
 
 
+![[700 Attachments/Pasted image 20220314133021.png]]
+
 
 # 查看RDD的依赖关系
 
 ```scala
-val rdd1 = sc.parallelize(Array("hello world", "hello world","hello jeffery", "jeffery", "hahah"), 2)
-val rdd2 = rdd1.map((_,1)).reduceByKey(_+_)
-
-println(rdd1.dependencies)  // List()
-println(rdd2.dependencies)  // List(org.apache.spark.ShuffleDependency@2c8662ac)
+def main(args: Array[String]): Unit = {  
+  //1.创建SparkConf并设置App名称  
+ val conf: SparkConf = new SparkConf().setAppName("SparkCoreTest").setMaster("local[*]")  
+  
+  //2.创建SparkContext，该对象是提交Spark App的入口  
+ val sc: SparkContext = new SparkContext(conf)  
+  
+  val fileRDD: RDD[String] = sc.textFile("input/1.txt")  
+  println(fileRDD.dependencies)  
+  println("----------------------")  
+  
+  val wordRDD: RDD[String] = fileRDD.flatMap(_.split(" "))  
+  println(wordRDD.dependencies)  
+  println("----------------------")  
+  
+  val mapRDD: RDD[(String, Int)] = wordRDD.map((_,1))  
+  println(mapRDD.dependencies)  
+  println("----------------------")  
+  
+  val resultRDD: RDD[(String, Int)] = mapRDD.reduceByKey(_+_)  
+  println(resultRDD.dependencies)  
+  
+  resultRDD.collect()  
+  
+  //4.关闭连接  
+ sc.stop()  
+}
 ```
+结果：
+```
+List(org.apache.spark.OneToOneDependency@f2ce6b)
+----------------------
+List(org.apache.spark.OneToOneDependency@692fd26)
+----------------------
+List(org.apache.spark.OneToOneDependency@627d8516)
+----------------------
+List(org.apache.spark.ShuffleDependency@a518813)
+
+```
+![[700 Attachments/Pasted image 20220314133336.png]]
 
 >  RDD 之间的关系可以从两个维度来理解: 
 >

@@ -43,11 +43,89 @@ flatMap...
 > 1. 每调用一次 **collect**, 都会创建一个新的 job, 每个 job 总是从它血缘的起始开始计算. 所以, 会发现中间的这些计算过程都会重复的执行.
 > 2. 原因是 **rdd**记录了整个计算过程. 如果计算的过程中出现哪个分区的数据损坏或丢失, 则可以从头开始计算来达到容错的目的.
 
+## RDD Cache 缓存
+RDD通过Cache或者Persist方法将前面的计算结果缓存，默认情况下会把数据以序列化的形式缓存在JVM的堆内存中。但是并不是这两个方法被调用时立即缓存，而是触发后面的action时，该RDD将会被缓存在计算节点的内存中，并供后面重用。
+
+![[700 Attachments/Pasted image 20220314222200.png]]
+```scala
+  def main(args: Array[String]): Unit = {
+    //1.创建SparkConf并设置App名称
+    val conf: SparkConf = new SparkConf().setAppName("SparkCoreTest").setMaster("local[*]")
+    //2.创建SparkContext，该对象是提交Spark App的入口
+    val sc: SparkContext = new SparkContext(conf)
+    //3. 创建一个RDD，读取指定位置文件:hello atguigu atguigu
+    val lineRdd: RDD[String] = sc.makeRDD(List("hello","spark","hello scala","hello hadoop"))
+    //3.1.业务逻辑
+    val wordRdd: RDD[String] = lineRdd.flatMap(line => line.split(" "))
+    val wordToOneRdd: RDD[(String, Int)] = wordRdd.map((_,1))
+    //3.5 cache操作会增加血缘关系，不改变原有的血缘关系
+    println(wordToOneRdd.toDebugString)
+    //3.4 数据缓存。
+    wordToOneRdd.cache()
+    //3.6 可以更改存储级别
+    // wordToOneRdd.persist(StorageLevel.MEMORY_AND_DISK_2)
+    //3.2 触发执行逻辑
+    wordToOneRdd.collect()
+    println("-----------------")
+    println(wordToOneRdd.toDebugString)
+    //3.3 再次触发执行逻辑
+    wordToOneRdd.collect()
+    //4.关闭连接
+    sc.stop()
+  }
+```
+> 注意：默认的存储级别都是仅在内存存储一份。
+
+![[700 Attachments/Pasted image 20220314222617.png]]
+缓存有可能丢失，或者存储于内存的数据由于内存不足而被删除，RDD的缓存容错机制保证了即使缓存丢失也能保证计算的正确执行。通过基于RDD的一系列转换，丢失的数据会被重算，由于RDD的各个Partition是相对独立的，因此只需要计算丢失的部分即可，并不需要重算全部Partition。
+
+### 自带缓存算子
+Spark会自动对一些Shuffle操作的中间数据做持久化操作(比如：reduceByKey)。这样做的目的是为了当一个节点Shuffle失败了避免重新计算整个输入。但是，在实际使用的时候，如果想重用数据，仍然建议调用persist或cache。
+```scala
+def main(args: Array[String]): Unit = {  
+  //1.创建SparkConf并设置App名称  
+ val conf: SparkConf = new SparkConf().setAppName("SparkCoreTest").setMaster("local[*]")  
+  
+  //2.创建SparkContext，该对象是提交Spark App的入口  
+ val sc: SparkContext = new SparkContext(conf)  
+  
+  //3. 创建一个RDD，读取指定位置文件:hello atguigu atguigu  
+ val lineRdd: RDD[String] = sc.makeRDD(List("hello","spark","hello scala","hello hadoop"))  
+  
+  //3.1.业务逻辑  
+ val wordRdd: RDD[String] = lineRdd.flatMap(line => line.split(" "))  
+  
+  val wordToOneRdd: RDD[(String, Int)] = wordRdd.map((_,1))  
+  
+  // 采用reduceByKey，自带缓存  
+ val wordByKeyRDD: RDD[(String, Int)] = wordToOneRdd.reduceByKey(_+_)  
+  
+  //3.5 cache操作会增加血缘关系，不改变原有的血缘关系  
+ println(wordByKeyRDD.toDebugString)  
+  
+  //3.4 数据缓存。  
+ //wordByKeyRDD.cache()  
+ //3.2 触发执行逻辑 wordByKeyRDD.collect()  
+  
+  println("-----------------")  
+  println(wordByKeyRDD.toDebugString)  
+  
+  //3.3 再次触发执行逻辑  
+ wordByKeyRDD.collect()  
+  
+  //4.关闭连接  
+ sc.stop()  
+}
+
+```
+访问http://localhost:4040/jobs/页面，查看第一个和第二个job的DAG图。说明：增加缓存后血缘依赖关系仍然有，但是，第二个job取的数据是从缓存中取的。
+![[700 Attachments/Pasted image 20220314223039.png]]
 
 
-## RDD数据持久化
 
-每个 job 都会重新进行计算, 在有些情况下是没有必要, 如何解决这个问题呢?
+## RDD persist 缓存
+
+行动算子会触发每个 job 都会重新进行计算, 在有些情况下是没有必要, 如何解决这个问题呢?
 
 Spark 一个重要能力就是可以持久化数据集在内存中。当我们持久化一个 RDD 时, 每个节点都会存储他在内存中计算的那些分区, 然后在其他的 action 中可以重用这些数据. 这个特性会让将来的 action 计算起来更快(通常块 10 倍)。 对于迭代算法和快速交互式查询来说, 缓存(Caching)是一个关键工具。
 
@@ -110,13 +188,27 @@ flatMap...
 
 Spark 中对于数据的保存除了持久化操作之外，还提供了一种检查点的机制,检查点（本质是通过将RDD写入Disk做检查点）是为了通过 Lineage 做容错的辅助。
 
-Lineage 过长会造成容错成本过高，这样就不如在中间阶段做检查点容错，如果之后有节点出现问题而丢失分区，从做检查点的 RDD 开始重做 Lineage，就会减少开销。
+1. ==为什么要做检查点==？
+	Lineage 过长会造成容错成本过高，这样就不如在中间阶段做检查点容错，如果之后有节点出现问题而丢失分区，从做检查点的 RDD 开始重做 Lineage，就会减少开销。
 
-检查点通过将数据写入到 HDFS 文件系统实现了 RDD 的检查点功能。
+2. ==检查点存储路径==：
+	检查点通过将数据写入到 HDFS 文件系统实现了 RDD 的检查点功能。
+ 
 
-为当前 RDD 设置检查点。该函数将会创建一个二进制的文件，并存储到 checkpoint 目录中，该目录是用 **SparkContext.setCheckpointDir()**设置的。在 checkpoint 的过程中，该RDD 的所有依赖于父 RDD中 的信息将全部被移除。
+3. ==检查点数据存储格式为==：
+	为当前 RDD 设置检查点。该函数将会创建一个二进制的文件，并存储到 checkpoint 目录中，该目录是用 **SparkContext.setCheckpointDir()**设置的。
 
-对 RDD 进行 checkpoint 操作并不会马上被执行，必须执行 Action 操作才能触发, 在触发的时候需要对这个 RDD 重新计算。
+4. ==检查点切断血缘==：
+	在 checkpoint 的过程中，该RDD 的所有依赖于父 RDD中 的信息将全部被移除。
+
+5. ==检查点触发时间==：
+	对 RDD 进行 checkpoint 操作并不会马上被执行，必须执行 Action 操作才能触发, 在触发的时候需要对这个 RDD 重新计算。![[700 Attachments/Pasted image 20220314224009.png]]
+
+ 
+
+6. 设置检查点步骤
+	1. 设置检查点数据存储路径：sc.setCheckpointDir("./checkpoint1")
+	2. 调用检查点方法：wordToOneRdd.checkpoint()
 
 ```scala
 def main(args: Array[String]): Unit = {
@@ -173,13 +265,30 @@ abc : 1632130326619
 abc : 1632130326619
 ```
 
+ 
+
+访问http://localhost:4040/jobs/页面，查看4个job的DAG图。其中第2个图是checkpoint的job运行DAG图。第3、4张图说明，检查点切断了血缘依赖关系。
+![[700 Attachments/Pasted image 20220314224305.png]]
+
+ 
+1. 只增加checkpoint，没有增加Cache缓存打印：
+	第1个job执行完，触发了checkpoint，第2个job运行checkpoint，并把数据存储在检查点上。第3、4个job，数据从检查点上直接读取。
+
+2. 增加checkpoint，也增加Cache缓存打印
+	第1个job执行完，数据就保存到Cache里面了，第2个job运行checkpoint，直接读取Cache里面的数据，并把数据存储在检查点上。第3、4个job，数据从检查点上直接读取。
+
 ## 持久化和checkpoint的区别
+1. Cache缓存只是将数据保存起来，不切断血缘依赖。Checkpoint检查点切断血缘依赖。
+2. Cache缓存的数据通常存储在磁盘、内存等地方，可靠性低。Checkpoint的数据通常存储在HDFS等容错、高可用的文件系统，可靠性高。
+3. 建议对checkpoint()的RDD使用Cache缓存，这样checkpoint的job只需从Cache缓存中读取数据即可，否则需要再从头计算一次RDD。
+4. 如果使用完了缓存，可以通过unpersist（）方法释放缓存
 
-持久化只是将数据保存在 BlockManager 中，而 RDD 的 Lineage 是不变的。但是**checkpoint** 执行完后，RDD 已经没有之前所谓的依赖 RDD 了，而只有一个强行为其设置的**checkpointRDD**，RDD 的 Lineage 改变了。
 
-持久化的数据丢失可能性更大，磁盘、内存都可能会存在数据丢失的情况。但是 **checkpoint** 的数据通常是存储在如 HDFS 等容错、高可用的文件系统，数据丢失可能性较小。
+> 如果检查点数据存储到HDFS集群，要注意配置访问集群的用户名。否则会报访问权限异常。
+
 
 > 注意: 默认情况下，如果某个 RDD 没有持久化，但是设置了**checkpoint**，会存在问题. 本来这个 job 都执行结束了，但是由于中间 RDD 没有持久化，checkpoint job 想要将 RDD 的数据写入外部文件系统的话，需要全部重新计算一次，再将计算出来的 RDD 数据 checkpoint到外部文件系统。 所以，建议对 **checkpoint()**的 RDD 使用持久化, 这样 RDD 只需要计算一次就可以了.
+
 
 
 

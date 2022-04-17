@@ -8,5 +8,6 @@
   "promptDelete": false,
   "alwaysUpdateLinks": true,
   "newFileLocation": "folder",
-  "newFileFolderPath": "100 Inbox"
+  "newFileFolderPath": "100 Inbox",
+  "useMarkdownLinks": false
 }

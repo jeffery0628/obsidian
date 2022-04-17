@@ -17,15 +17,9 @@ RDD 表示只读的分区的数据集，对 RDD 进行改动，只能通过 RDD 
 ### 弹性
 
 存储的弹性：内存与磁盘的自动切换；
-
 容错的弹性：数据丢失可以自动恢复；
-
 计算的弹性：计算出错重试机制；
-
 分片的弹性：可根据需要重新分片。
-
-
-
 ### 分区
 
 RDD 逻辑上是分区的，每个分区的数据是抽象存在的，计算的时候会通过一个**compute**函数得到每个分区的数据。
@@ -75,33 +69,37 @@ RDDs 通过操作算子进行转换，转换得到的新 RDD 包含了从其他 
 
 ## 五个重要属性
 ### 多个分区
-
-
-
+```scala
+protected def getPartitions: Array[Partition]
+```
 分区可以看成是数据集的基本组成单位。对于 RDD 来说, 每个分区都会被一个计算任务处理, 并决定了并行计算的粒度。
 用户可以在创建 RDD 时指定 RDD 的分区数, 如果没有指定, 那么就会采用默认值，默认值就是程序所分配到的 CPU Core 的数目。
 每个分配的存储是由BlockManager 实现的. 每个分区都会被逻辑映射成 BlockManager 的一个 Block, 而这个 Block 会被一个 Task 负责计算。
 
-
-
 ### 计算每个分区函数
-
+```scala
+def compute(split: Partition, context: TaskContext): Iterator[T]
+```
   Spark 中 RDD 的计算是以分区（分片）为单位的, 每个 RDD 都会实现 **compute** 函数以达到这个目的。
 
-
-
 ### 与其他 RDD 之间的依赖关系
-
- RDD 的每次转换都会生成一个新的 RDD, 所以 RDD 之间会形成类似于流水线一样的前后依赖关系. 在部分分区数据丢失时, Spark 可以通过这个依赖关系重新计算丢失的分区数据, 而不是对 RDD 的所有分区进行重新计算。
+```scala
+protected def getDependencies: Seq[Dependency[_]] = deps
+```
+RDD 的每次转换都会生成一个新的 RDD, 所以 RDD 之间会形成类似于流水线一样的前后依赖关系. 在部分分区数据丢失时, Spark 可以通过这个依赖关系重新计算丢失的分区数据, 而不是对 RDD 的所有分区进行重新计算。
 
 ### 对存储键值对的 RDD, 还有一个可选的分区器
-
- 只有对于 **key-value**的 RDD, 才会有 **Partitioner**, 非**key-value**的 RDD 的 **Partitioner** 的值是 **None**. **Partitiner** 不但决定了 RDD 的分区数量, 也决定了 parent RDD Shuffle 输出时的分区数量.
+```scala
+val partitioner: Option[Partitioner] = None
+```
+只有对于 **key-value**的 RDD, 才会有 **Partitioner**, 非**key-value**的 RDD 的 **Partitioner** 的值是 **None**. **Partitiner** 不但决定了 RDD 的分区数量, 也决定了 parent RDD Shuffle 输出时的分区数量.
 
 
 
 ### 存储每个分区优先位置的列表
-
+```scala
+protected def getPreferredLocations(split: Partition): Seq[String] = Nil
+```
 比如对于一个 HDFS 文件来说, 这个列表保存的就是每个 **Partition** 所在文件块的位置. 按照“移动数据不如移动计算”的理念, Spark 在进行任务调度的时候, 会尽可能地将计算任务分配到其所要处理数据块的存储位置。
 
 

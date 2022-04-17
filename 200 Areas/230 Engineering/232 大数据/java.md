@@ -4,6 +4,9 @@ tags:
   - Engineering/java
   - 大数据
 ---
+# 安装
+[[300 Resources/java/搭建java 环境|搭建java 环境]]
+
 # 基础
 
 [[300 Resources/java/java 字节|java 字节]]

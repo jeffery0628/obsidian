@@ -4,6 +4,7 @@ tags:
   - Engineering/hadoop
   - 大数据
 ---
+# 安装hadoop
 
 
 # Hadoop 大数据生态架构

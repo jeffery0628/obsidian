@@ -28,4 +28,13 @@ Spark 可以非常方便的与其他开源产品进行融合。比如, Spark 可
 
 
 
+# Hadoop MR 框架 和 Spark 框架 
+## Hadoop MR 框架
+从数据源获取数据，经过分析计算后，将结果输出到指定位置，核心是==一次计算==，不适合迭代计算。
+![[700 Attachments/Pasted image 20220308133007.png]]
+## Spark 框架
+==支持迭代计算，图形计算==。Spark框架计算比MR快的原因是：中间结果不落盘。
+> 注意：Spark的Shuffle也是落盘的。
+
+![[700 Attachments/Pasted image 20220308133204.png]]
 
